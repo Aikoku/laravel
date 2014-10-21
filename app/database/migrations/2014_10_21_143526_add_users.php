@@ -12,12 +12,6 @@ class AddUsers extends Migration {
 	 */
 	public function up()
 	{
-        //            $table->increments('id'),
-        //            $table->string('username'),
-        //            $table->string('password'),
-        //            $table->string('name'),
-        //
-		// TEST
         DB::table('users')->insert(array(
             'username'=>'Login',
             'password'=>'Password',
@@ -41,7 +35,6 @@ class AddUsers extends Migration {
 	{
         DB::table('users')->where('name','=','Mark')->delete();
         DB::table('users')->where('name','=','Mark 2')->delete();
-		//
 	}
 
 }
