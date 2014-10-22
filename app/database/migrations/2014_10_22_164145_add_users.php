@@ -14,15 +14,21 @@ class AddUsers extends Migration {
 	{
         DB::table('users')->insert(array(
             'username'=>'Login',
-            'password'=>'Password',
+            'password'=>Hash::make('Password'),
             'name'=>'Mark',
             'lastname'=>'Nikolajev'
         ));
         DB::table('users')->insert(array(
-            'username'=>'Login 2',
-            'password'=>'Password 2',
-            'name'=>'Mark 2',
-            'lastname'=>'Nikolajev 2'
+            'username'=>'Login2',
+            'password'=>Hash::make('Password2'),
+            'name'=>'Angel',
+            'lastname'=>'Benjamin'
+        ));
+        DB::table('users')->insert(array(
+            'username'=>'Login3',
+            'password'=>Hash::make('Password3'),
+            'name'=>'Johan',
+            'lastname'=>'Tuga'
         ));
 	}
 
@@ -34,7 +40,8 @@ class AddUsers extends Migration {
 	public function down()
 	{
         DB::table('users')->where('name','=','Mark')->delete();
-        DB::table('users')->where('name','=','Mark 2')->delete();
+        DB::table('users')->where('name','=','Angel')->delete();
+        DB::table('users')->where('name','=','Johan')->delete();
 	}
 
 }

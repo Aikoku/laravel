@@ -11,12 +11,23 @@
 |
 */
 
+
+Route::get('users',function(){
+    $users = User::all();
+    return View::make('users/index')->withUsers($users);
+});
+Route::get("users/{username}",function($username){
+    $user = User::whereUsername($username)->first(); //select *from users where username = limit 1;
+    return View::make('users/show',['user'=>$user]);
+//    return View::make('users/show/')->withUser($user); // --ERROR
+});
+
 //Route::get('/', function()
 //{
 //	return View::make('Hello');
 //});
 
-Route::get('/',function(){
+//Route::get('/',function(){
 //    $user = DB::table('users')->get();
 //    $user = DB::table('users')->where('username','!=','mark')->get();
 //    DB::select('select * from users');
@@ -34,14 +45,12 @@ Route::get('/',function(){
 //    $user->save();
 
 //    User::create([
-//        'username' => 'Another User',
-//        'password'=> Hash::make('AnotherPassword')
+//        'username' => 'oneMoreUser',
+//        'password'=> Hash::make('password')
 //    ]);
 
-    //Updating old users
-//    $user=User::find(2);
-//    $user->username = 'Updated Name';
-//    $user->save();
+//    Updating old users
+//    $user=User::find(3);
 
     //Deleting User
 //    $user = User::find(2);
@@ -51,13 +60,15 @@ Route::get('/',function(){
 //    return User::orderBy('username','asc')->get();
     //Take first two in order
 
-    return User::orderBy('username','asc')->take(2)->get();
-
+//    return User::orderBy('username','asc')->take(2)->get();
+//return User::all();
+//    $users = DB::table('users')->get();
+//    return $users;
 //    return User::all();
 
 //    dd($user); // die(var_dump($user));
 //    return $users;
-});
+//});
 
 //Route::get('/','PagesController@index');
 //Route::get('about','PagesController@about');
