@@ -12,15 +12,21 @@
 */
 
 
-Route::get('users',function(){
-    $users = User::all();
-    return View::make('users/index')->withUsers($users);
-});
-Route::get("users/{username}",function($username){
-    $user = User::whereUsername($username)->first(); //select *from users where username = limit 1;
-    return View::make('users/show',['user'=>$user]);
-//    return View::make('users/show/')->withUser($user); // --ERROR
-});
+//Route::get('users','UsersController@index');
+//Route::get('users/{username}','UsersController@show');
+//Route::get('users/{username}','UsersController@create');
+Route::resource('users','UsersController');
+
+
+//Route::get('users',function(){
+//    $users = User::all();
+//    return View::make('users/index')->withUsers($users);
+//});
+//Route::get("users/{username}",function($username){
+//    $user = User::whereUsername($username)->first(); //select *from users where username = limit 1;
+//    return View::make('users/show',['user'=>$user]);
+////    return View::make('users/show/')->withUser($user); // --ERROR
+//});
 
 //Route::get('/', function()
 //{

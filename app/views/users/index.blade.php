@@ -1,14 +1,15 @@
-<html>
-<head>
-<meta charset="UTF-8">
-<title>Document</title>
-</head>
-<body>
-  <h1>All users:</h1>
-  @foreach($users as $user)
-  <li>{{link_to("users/{$user->username}",$user->username)}}</li>
+@extends('layouts.default')
 
-    {{--<li>{{$user->username}}</li>--}}
-  @endforeach
-</body>
-</html>
+@section('content')
+    <h1>All users:</h1>
+
+    @if ($users->count())
+        @foreach($users as $user)
+        <li>{{link_to("users/{$user->username}",$user->username)}}</li>
+        {{--<li>{{$user->username}}</li>--}}
+        @endforeach
+
+        @else
+        <p>Error, there are no users.</p>
+    @endif
+@stop
