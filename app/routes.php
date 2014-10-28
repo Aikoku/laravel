@@ -17,6 +17,11 @@
 //Route::get('users/{username}','UsersController@create');
 Route::resource('users','UsersController');
 
+Route::get('login','SessionsController@create');
+Route::get('logout','SessionsController@destroy');
+Route::resource('sessions','SessionsController');
+//Route::get('admin','SessionsController@show')->before('auth');
+
 
 //Route::get('users',function(){
 //    $users = User::all();

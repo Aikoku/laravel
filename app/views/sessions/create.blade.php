@@ -1,7 +1,7 @@
 @extends('layouts.default')
 
 @section('content')
-    <h1>Create new user:</h1>
+    <h1>LogIn Form</h1>
     {{ Form::open(['route' => 'sessions.store']) }}
 
         <div>
@@ -18,7 +18,7 @@
         </div>
 
         <div>
-            {{ Form::submit('Create User') }}
+            {{ Form::submit('Log In') }}
         </div>
 
     {{ Form::close() }}

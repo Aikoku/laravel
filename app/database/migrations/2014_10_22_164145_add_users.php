@@ -30,6 +30,12 @@ class AddUsers extends Migration {
             'name'=>'Johan',
             'lastname'=>'Tuga'
         ));
+        DB::table('users')->insert(array(
+            'username'=>'test',
+            'password'=>Hash::make('test'),
+            'name'=>'testName',
+            'lastname'=>'testLastName'
+        ));
 	}
 
 	/**
@@ -42,6 +48,8 @@ class AddUsers extends Migration {
         DB::table('users')->where('name','=','Mark')->delete();
         DB::table('users')->where('name','=','Angel')->delete();
         DB::table('users')->where('name','=','Johan')->delete();
-	}
+        DB::table('users')->where('name','=','test')->delete();
+
+    }
 
 }

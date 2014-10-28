@@ -2,7 +2,7 @@
 
 class UsersController extends \BaseController {
 
-    protected $suer;
+    protected $user;
     public function __construct(User $user){
         $this->user=$user;
     }
@@ -27,6 +27,7 @@ class UsersController extends \BaseController {
         if(!$this->user->fill($input)->isValid()){
             return Redirect::back()->withInput()->withErrors($this->user->errors);
         }
+//        $this->user->password = Hash::make(Input::get('password'));
         $this->user->create($input);
         return Redirect::route('users.index');
 
