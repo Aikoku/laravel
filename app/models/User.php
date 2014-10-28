@@ -16,7 +16,7 @@ class User extends Eloquent implements UserInterface, RemindableInterface {
         'username'=>'required',
         'password'=>'required'
     ];
-    public static $errors;
+    public $errors;
 
 	/**
 	 * The database table used by the model.
@@ -32,12 +32,12 @@ class User extends Eloquent implements UserInterface, RemindableInterface {
 	 */
 	protected $hidden = array('password', 'remember_token');
 
-    public static function isValid($data) {
-        $validation = Validator::make($data, static::$rules);
+    public function isValid() {
+        $validation = Validator::make($this->attributes, static::$rules);
         if($validation->passes()){
             return true;
         }
-        static::$errors = $validation->messages();
+        $this->errors = $validation->messages();
         return false;
     }
 
